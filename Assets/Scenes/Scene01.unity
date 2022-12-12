@@ -256,7 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 696844532}
-  target: {fileID: 696844531}
   zombieMovement: {fileID: 664833275}
 --- !u!114 &664833275
 MonoBehaviour:
@@ -272,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRunning: 0
   transitionSpeed: 10
-  target: {fileID: 0}
+  target: {fileID: 696844531}
 --- !u!1 &696844529
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +283,7 @@ GameObject:
   - component: {fileID: 696844531}
   - component: {fileID: 696844530}
   - component: {fileID: 696844532}
+  - component: {fileID: 696844533}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -339,14 +339,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c510564cd5ed04096aaa6c6dd37553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 696844533}
+--- !u!114 &696844533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696844529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a33f09678012fa448013d8b679e4804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   controller: {fileID: 696844530}
   groundChecker: {fileID: 801784508}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  speedWalk: 12
-  speedRun: 24
-  g: -9.18
+  speedWalk: 6
+  speedRun: 10
+  g: -20
   groundDistance: 0.4
   jumpHeight: 3
   stamina: 5
