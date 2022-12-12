@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
-    float staminaRate = 1f;
+    float staminaRecRate = 1f;
     float maxStamina = 5f;
     float health = 100f;
 
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         if (isRunning())
         {
             controller.Move(move * speedRun * Time.deltaTime);
-            stamina = stamina - staminaRate * Time.deltaTime;
+            stamina = stamina - staminaRecRate * Time.deltaTime;
         } else
         {
             controller.Move(move * speedWalk * Time.deltaTime);
@@ -67,15 +67,15 @@ public class Player : MonoBehaviour
 
     void recoverStamina()
     {
-        if (stamina + staminaRate * Time.deltaTime < maxStamina)
+        if (stamina + staminaRecRate * Time.deltaTime < maxStamina)
         {
-            stamina = stamina + staminaRate * Time.deltaTime;
+            stamina = stamina + staminaRecRate * Time.deltaTime;
         }
     }
 
-    public void isAttacked()
+    public void isAttacked(float damage)
     {
-        health -= 1f;
+        health -= damage;
         Debug.Log("player is attacked, health: " + health);
     }
 }

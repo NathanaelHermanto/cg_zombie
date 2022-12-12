@@ -255,10 +255,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1976c3bf3dd534b9f7c212d25ab934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 0
-  transitionSpeed: 10
   player: {fileID: 696844532}
   target: {fileID: 696844531}
+  zombieMovement: {fileID: 664833275}
+--- !u!114 &664833275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664833270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3d2db8afdffef4d86032510262006f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRunning: 0
+  transitionSpeed: 10
+  target: {fileID: 0}
 --- !u!1 &696844529
 GameObject:
   m_ObjectHideFlags: 0
