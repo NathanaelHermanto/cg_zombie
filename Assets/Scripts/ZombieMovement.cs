@@ -6,11 +6,13 @@ public class ZombieMovement : MonoBehaviour
     public bool isRunning = false;
     public float transitionSpeed = 10f;
     public Transform target;
+    public bool hasCataract = false;
 
     Animator animator;
     float currentSpeed = 0f;
     float targetSpeed = 0f;
     bool arrivedAtTarget = false;
+    float sightDistance = 10f;
 
     Vector2 destination
     {
@@ -40,15 +42,13 @@ public class ZombieMovement : MonoBehaviour
     {
         transform.LookAt(new Vector3(destination.x, transform.position.y, destination.y));
 
-        if (shouldMove())
+        if (hasCataract)
         {
-            targetSpeed = getSpeed();
-            arrivedAtTarget = false;
-        }
-        else
+            if (canSeePlayer()) 
+                move();
+        } else
         {
-            targetSpeed = 0f;
-            arrivedAtTarget = true;
+            move();
         }
 
         currentSpeed = Mathf.SmoothStep(currentSpeed, targetSpeed, Time.deltaTime * transitionSpeed);
@@ -64,6 +64,25 @@ public class ZombieMovement : MonoBehaviour
     private float getSpeed()
     {
         return (isRunning) ? 2f : 1f;
+    }
+
+    private void move()
+    {
+        if (shouldMove())
+        {
+            targetSpeed = getSpeed();
+            arrivedAtTarget = false;
+        }
+        else
+        {
+            targetSpeed = 0f;
+            arrivedAtTarget = true;
+        }
+    }
+
+    private bool canSeePlayer()
+    {
+        return Vector2.Distance(posV2, destination) < sightDistance;
     }
 
     public bool isArrivedAtTarget()
