@@ -10,6 +10,7 @@ public class ZombieAI : MonoBehaviour
     float attackSpeed = 1f;
     float attackCooldown = 0f;
     float attackDamage = 5f;
+    bool isBlasted = false;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,12 @@ public class ZombieAI : MonoBehaviour
             attackCooldown -= Time.deltaTime;
             attackPlayer();
         }
+
+        if (isBlasted)
+        {
+            dying();
+            isBlasted = false;
+        }
     }
 
     private void attackPlayer()
@@ -36,5 +43,16 @@ public class ZombieAI : MonoBehaviour
             player.isAttacked(attackDamage);
             attackCooldown = 1f / attackSpeed;
         }
+    }
+
+    void dying()
+    {
+        Debug.Log("zombie is blasted to oblivion");
+        animator.SetTrigger("dead");
+    }
+
+    public void blasted()
+    {
+        isBlasted = true;
     }
 }
