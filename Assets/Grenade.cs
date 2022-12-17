@@ -40,6 +40,7 @@ public class Grenade : MonoBehaviour
 
         foreach(Collider blastedObject in colliders)
         {
+            // add explosion force
             Rigidbody rb = blastedObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -47,11 +48,12 @@ public class Grenade : MonoBehaviour
                 rb.AddExplosionForce(blastForce, transform.position, blastRadius);
             }
 
+            // get zombie blasted and trigger animation
             ZombieAI zombie = blastedObject.GetComponent<ZombieAI>();
             if (zombie != null)
             {
                 Debug.Log(zombie.name);
-                zombie.blasted();
+                zombie.Blasted();
             }
         }
 

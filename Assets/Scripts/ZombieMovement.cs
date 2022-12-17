@@ -44,11 +44,11 @@ public class ZombieMovement : MonoBehaviour
 
         if (hasCataract)
         {
-            if (canSeePlayer()) 
-                move();
+            if (CanSeePlayer()) 
+                Move();
         } else
         {
-            move();
+            Move();
         }
 
         currentSpeed = Mathf.SmoothStep(currentSpeed, targetSpeed, Time.deltaTime * transitionSpeed);
@@ -56,21 +56,21 @@ public class ZombieMovement : MonoBehaviour
 
     }
 
-    private bool shouldMove()
+    private bool ShouldMove()
     {
         return Vector2.Distance(posV2, destination) > 1.8f;
     }
 
-    private float getSpeed()
+    private float GetSpeed()
     {
         return (isRunning) ? 2f : 1f;
     }
 
-    private void move()
+    private void Move()
     {
-        if (shouldMove())
+        if (ShouldMove())
         {
-            targetSpeed = getSpeed();
+            targetSpeed = GetSpeed();
             arrivedAtTarget = false;
         }
         else
@@ -80,12 +80,12 @@ public class ZombieMovement : MonoBehaviour
         }
     }
 
-    private bool canSeePlayer()
+    private bool CanSeePlayer()
     {
         return Vector2.Distance(posV2, destination) < sightDistance;
     }
 
-    public bool isArrivedAtTarget()
+    public bool IsArrivedAtTarget()
     {
         return arrivedAtTarget;
     }

@@ -22,36 +22,37 @@ public class ZombieAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (zombieMovement.isArrivedAtTarget())
+        if (zombieMovement.IsArrivedAtTarget())
         {
             attackCooldown -= Time.deltaTime;
-            attackPlayer();
+            AttackPlayer();
         }
 
         if (isBlasted)
         {
-            dying();
+            Dying();
             isBlasted = false;
         }
     }
 
-    private void attackPlayer()
+    private void AttackPlayer()
     {
         if (attackCooldown <= 0f ) 
         {
             animator.SetTrigger("attack");
-            player.isAttacked(attackDamage);
+            player.IsAttacked(attackDamage);
             attackCooldown = 1f / attackSpeed;
         }
     }
 
-    void dying()
+    void Dying()
     {
         Debug.Log("zombie is blasted to oblivion");
         animator.SetTrigger("dead");
+        //Destroy(gameObject);
     }
 
-    public void blasted()
+    public void Blasted()
     {
         isBlasted = true;
     }

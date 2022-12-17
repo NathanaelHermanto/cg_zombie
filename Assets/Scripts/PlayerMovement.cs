@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         // run
-        if (isRunning())
+        if (IsRunning())
         {
             controller.Move(move * speedRun * Time.deltaTime);
             stamina = stamina - staminaRecRate * Time.deltaTime;
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             controller.Move(move * speedWalk * Time.deltaTime);
-            recoverStamina();
+            RecoverStamina();
         }
 
         // jump
@@ -58,12 +58,12 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    bool isRunning()
+    bool IsRunning()
     {
         return Input.GetKey(KeyCode.LeftShift) && stamina > 0f;
     }
 
-    void recoverStamina()
+    void RecoverStamina()
     {
         if (stamina + staminaRecRate * Time.deltaTime < maxStamina)
         {

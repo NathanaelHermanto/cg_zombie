@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead() && !dead)
+        if (IsDead() && !dead)
         {
             Debug.Log("you're dead lol");
             dead = true;
@@ -26,13 +26,13 @@ public class Player : MonoBehaviour
         healthBar.value = health;
     }
 
-    public void isAttacked(float damage)
+    public void IsAttacked(float damage)
     {
         health -= damage;
         Debug.Log("player is attacked, health: " + health);
     }
 
-    private bool isDead()
+    private bool IsDead()
     {
         return health <= 0;
     }
