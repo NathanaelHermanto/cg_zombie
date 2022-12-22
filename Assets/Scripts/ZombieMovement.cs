@@ -7,12 +7,15 @@ public class ZombieMovement : MonoBehaviour
     public float transitionSpeed = 10f;
     public Transform target;
     public bool hasCataract = false;
+    public Zombie zombie;
 
     Animator animator;
     float currentSpeed = 0f;
     float targetSpeed = 0f;
     bool arrivedAtTarget = false;
     float sightDistance = 10f;
+    Vector3 targetPosition;
+    Quaternion lastRotation;
 
     Vector2 destination
     {
@@ -40,7 +43,17 @@ public class ZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(new Vector3(destination.x, transform.position.y, destination.y));
+        if (!zombie.IsDead())
+        {
+            targetPosition = new Vector3(destination.x, transform.position.y, destination.y);
+            lastRotation = transform.rotation;
+            transform.LookAt(targetPosition);
+        }
+        else
+        {
+            transform.LookAt(targetPosition);
+            transform.rotation = lastRotation;
+        }
 
         if (hasCataract)
         {
