@@ -8,12 +8,12 @@ public class ZombieMovement : MonoBehaviour
     public Transform target;
     public bool hasCataract = false;
     public Zombie zombie;
+    public float sightDistance = 3f;
 
     Animator animator;
     float currentSpeed = 0f;
     float targetSpeed = 0f;
     bool arrivedAtTarget = false;
-    float sightDistance = 10f;
     Vector3 targetPosition;
     Quaternion lastRotation;
 

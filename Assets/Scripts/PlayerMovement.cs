@@ -6,11 +6,11 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform groundChecker;
     public LayerMask groundMask;
-    public float speedWalk = 6f;
+    public float speedWalk = 5f;
     public float speedRun = 10f;
-    public float g = -20f;
+    public float g = -30f;
     public float groundDistance = 0.4f;
-    public float jumpHeight = 3f;
+    public float jumpHeight = 1f;
     public float stamina = 5f;
 
     Vector3 velocity;
