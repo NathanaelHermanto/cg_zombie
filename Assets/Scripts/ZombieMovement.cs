@@ -16,6 +16,8 @@ public class ZombieMovement : MonoBehaviour
     bool arrivedAtTarget = false;
     Vector3 targetPosition;
     Quaternion lastRotation;
+    Vector3 lookDirection;
+    bool followPlayer = false;
 
     Vector2 destination
     {
@@ -38,6 +40,8 @@ public class ZombieMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        lookDirection = new Vector3(UnityEngine.Random.Range(-50f, 50f), transform.position.y, UnityEngine.Random.Range(-50f, 50f));
+        transform.LookAt(lookDirection);
     }
 
     // Update is called once per frame
@@ -47,7 +51,13 @@ public class ZombieMovement : MonoBehaviour
         {
             targetPosition = new Vector3(destination.x, transform.position.y, destination.y);
             lastRotation = transform.rotation;
-            transform.LookAt(targetPosition);
+            if (followPlayer)
+            {
+                transform.LookAt(targetPosition);
+            } else
+            {
+                transform.LookAt(lookDirection);
+            }
         }
         else
         {
@@ -71,7 +81,7 @@ public class ZombieMovement : MonoBehaviour
 
     private bool ShouldMove()
     {
-        return Vector2.Distance(posV2, destination) > 1.8f;
+        return Vector2.Distance(posV2, destination) > 2f;
     }
 
     private float GetSpeed()
@@ -95,7 +105,13 @@ public class ZombieMovement : MonoBehaviour
 
     private bool CanSeePlayer()
     {
-        return Vector2.Distance(posV2, destination) < sightDistance;
+        bool canSeePlayer = Vector2.Distance(posV2, destination) < sightDistance;
+        if (canSeePlayer)
+        {
+            followPlayer = true;
+        }
+
+        return canSeePlayer;
     }
 
     public bool IsArrivedAtTarget()

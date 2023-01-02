@@ -6,7 +6,7 @@ using UnityEngine;
 public class Grenade : MonoBehaviour
 {
     public float delay = 3f;
-    public float blastRadius = 5f;
+    public float blastRadius = 3f;
     public float blastForce = 1000f;
 
     public GameObject explosionEffect;
