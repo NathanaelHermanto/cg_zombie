@@ -8,7 +8,7 @@ public class ZombieMovement : MonoBehaviour
     public Transform target;
     public bool hasCataract = false;
     public Zombie zombie;
-    public float sightDistance = 3f;
+    public float sightDistance = 5f;
 
     Animator animator;
     float currentSpeed = 0f;
@@ -39,27 +39,25 @@ public class ZombieMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!hasCataract)
+        {
+            followPlayer = true;
+        }
         animator = GetComponent<Animator>();
         lookDirection = new Vector3(UnityEngine.Random.Range(-50f, 50f), transform.position.y, UnityEngine.Random.Range(-50f, 50f));
+        targetPosition = new Vector3(destination.x, transform.position.y, destination.y);
         transform.LookAt(lookDirection);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!zombie.IsDead())
+        if(!zombie.IsDead() && followPlayer)
         {
             targetPosition = new Vector3(destination.x, transform.position.y, destination.y);
             lastRotation = transform.rotation;
-            if (followPlayer)
-            {
-                transform.LookAt(targetPosition);
-            } else
-            {
-                transform.LookAt(lookDirection);
-            }
-        }
-        else
+            transform.LookAt(targetPosition);
+        } else
         {
             transform.LookAt(targetPosition);
             transform.rotation = lastRotation;
@@ -81,7 +79,7 @@ public class ZombieMovement : MonoBehaviour
 
     private bool ShouldMove()
     {
-        return Vector2.Distance(posV2, destination) > 2f;
+        return Vector2.Distance(posV2, destination) > 1.8f;
     }
 
     private float GetSpeed()
