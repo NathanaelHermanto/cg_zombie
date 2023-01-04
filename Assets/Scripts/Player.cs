@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
+using UnityEditor;
 
 public class Player : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public Slider healthBar;
     public Transform target;
+    public GameObject winUI;
+    public GameObject loseUI;
+
     float health = 100f;
     bool dead = false;
 
@@ -39,13 +44,15 @@ public class Player : MonoBehaviour
         {
             Debug.Log("you're dead lol");
             dead = true;
+            EndGame(loseUI);
         }
 
         healthBar.value = health;
 
         if (ArrivedAtExit())
         {
-            Debug.Log("game end");
+            Debug.Log("you win");
+            EndGame(winUI);
         }
     }
 
@@ -63,5 +70,12 @@ public class Player : MonoBehaviour
     private bool ArrivedAtExit()
     {
         return Vector2.Distance(posV2, destination) < 5f;
+    }
+
+    private void EndGame(GameObject UI)
+    {
+        Time.timeScale = 0f;
+        PauseMenu.GameIsPaused = true;
+        UI.SetActive(true);
     }
 }

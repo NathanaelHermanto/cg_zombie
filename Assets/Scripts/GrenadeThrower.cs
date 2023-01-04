@@ -14,7 +14,10 @@ public class GrenadeThrower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (MainMenu.Cheat)
+        {
+            ammo = 100;
+        }
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class GrenadeThrower : MonoBehaviour
     {
         ammoDisplay.text = ammo.ToString();
 
-        if (Input.GetMouseButtonDown(0) && ammo>0f)
+        if (Input.GetMouseButtonDown(0) && ammo>0f && !PauseMenu.GameIsPaused)
         {
             ThrowGrenade();
             decreaseAmmo();

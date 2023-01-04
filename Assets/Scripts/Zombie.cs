@@ -9,7 +9,7 @@ public class Zombie : MonoBehaviour
     Animator animator;
     float attackSpeed = 1f;
     float attackCooldown = 0f;
-    float attackDamage = 5f;
+    float attackDamage = 10f;
     bool isBlasted = false;
     bool dead = false;
     bool fallback;
