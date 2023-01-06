@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // mouse movement tutorial: https://www.youtube.com/watch?v=_QajrabyTJc&ab_channel=Brackeys

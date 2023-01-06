@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +12,7 @@ public class GrenadeThrower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (MainMenu.Cheat)
+        if (GameManager.Cheat)
         {
             ammo = 100;
         }

@@ -1,18 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using static UnityEngine.GraphicsBuffer;
-using UnityEditor;
 
 public class Player : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public Slider healthBar;
-    public Transform target;
+    public Transform targetCheat;
+
     public GameObject winUI;
     public GameObject loseUI;
+    public Transform target;
 
-    float health = 100f;
+    public float health = 100f;
     bool dead = false;
 
     Vector2 posV2
@@ -27,14 +26,30 @@ public class Player : MonoBehaviour
     {
         get
         {
+            if (target == null)
+            {
+                target = (GameManager.Cheat)? targetCheat: GameManager.GetRandomExit();
+            }
+
             return new Vector2(target.position.x, target.position.z);
         }
     }
 
-    private void Start()
+    void Start()
     {
+        Time.timeScale = 1f;
+        PauseMenu.GameIsPaused = false;
         healthBar.minValue = 0f;
         healthBar.maxValue = health;
+        if (GameManager.Cheat)
+        {
+            health = 10000f;
+            target = targetCheat;
+        }
+        else
+        {
+            target = GameManager.GetRandomExit();
+        }
     }
 
     // Update is called once per frame
