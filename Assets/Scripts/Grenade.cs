@@ -3,15 +3,16 @@ using UnityEngine;
 // explode grenade and get items affected tutorial: https://www.youtube.com/watch?v=BYL6JtUdEY0&list=WL&index=13&ab_channel=Brackeys
 public class Grenade : MonoBehaviour
 {
-    public float delay = 3f;
-    public float blastRadius = 3f;
-    public float blastForce = 1000f;
+    public float delay = 2.5f;
+    public float blastRadius = 2f;
+    public float blastForce = 100f;
 
     public GameObject explosionEffect;
 
     float countdown;
+    float damagePlayer = 5f;
     bool hasExploded = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,12 @@ public class Grenade : MonoBehaviour
                 bool isInFront = Vector3.Dot(transform.forward, relativePos) > 0.0f;  
                 
                 zombie.Blasted(isInFront);
+            }
+
+            Player player = blastedObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.IsAttacked(damagePlayer);
             }
         }
 

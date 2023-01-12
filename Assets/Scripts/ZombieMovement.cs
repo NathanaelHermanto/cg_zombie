@@ -8,7 +8,7 @@ public class ZombieMovement : MonoBehaviour
     public Transform target;
     public bool hasCataract = false;
     public Zombie zombie;
-    public float sightDistance = 5f;
+    float sightDistance = 5f;
 
     Animator animator;
     float currentSpeed = 0f;

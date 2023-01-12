@@ -7,6 +7,7 @@ public class Zombie : MonoBehaviour
     public ZombieMovement zombieMovement;
 
     Animator animator;
+    CharacterController cc;
     float attackSpeed = 1f;
     float attackCooldown = 0f;
     float attackDamage = 10f;
@@ -18,6 +19,8 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        cc = GetComponent<CharacterController>();
+        Physics.IgnoreLayerCollision(0, 7, false);
     }
 
     // Update is called once per frame
@@ -58,7 +61,10 @@ public class Zombie : MonoBehaviour
         {
             animator.SetTrigger("deadFallBack");
         }
-        //Destroy(gameObject);
+       
+        cc.GetComponent<Rigidbody>().isKinematic = true;
+        cc.GetComponent<CapsuleCollider>().gameObject.layer = 7;
+        Physics.IgnoreLayerCollision(0, 7);
     }
 
     public void Blasted(bool back)

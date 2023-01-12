@@ -166,7 +166,7 @@ BoxCollider:
   m_GameObject: {fileID: 399852642}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -417,7 +417,6 @@ MonoBehaviour:
   target: {fileID: 1703693106}
   hasCataract: 0
   zombie: {fileID: 839825088}
-  sightDistance: 3
 --- !u!114 &839825088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,6 +1654,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7179885403438165400, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
+      propertyPath: m_Height
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179885403438165400, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 7179885403438165404, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
       propertyPath: player
       value: 
@@ -1670,6 +1677,14 @@ PrefabInstance:
     - target: {fileID: 7179885403438165405, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
       propertyPath: hasCataract
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179885403438165407, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179885403438165407, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7694bc6ec8b6a499a65c6f30e5307b, type: 3}
