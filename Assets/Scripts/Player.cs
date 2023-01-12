@@ -6,12 +6,12 @@ public class Player : MonoBehaviour
     public PlayerMovement playerMovement;
     public Slider healthBar;
     public Transform targetCheat;
-
     public GameObject winUI;
     public GameObject loseUI;
+    public GameObject lowHealthUI;
     public Transform target;
-
     public float health = 100f;
+
     bool dead = false;
 
     Vector2 posV2
@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("you're dead lol");
             dead = true;
+            lowHealthUI.SetActive(false);
             EndGame(loseUI);
         }
 
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour
         if (ArrivedAtExit())
         {
             Debug.Log("you win");
+            lowHealthUI.SetActive(false);
             EndGame(winUI);
         }
     }
@@ -74,7 +76,9 @@ public class Player : MonoBehaviour
     public void IsAttacked(float damage)
     {
         health -= damage;
+        lowHealthUI.SetActive(true);
         Debug.Log("player is attacked, health: " + health);
+        Invoke("TurnOffAttackedPanel", 0.5f);
     }
 
     private bool IsDead()
@@ -92,5 +96,10 @@ public class Player : MonoBehaviour
         Time.timeScale = 0f;
         PauseMenu.GameIsPaused = true;
         UI.SetActive(true);
+    }
+
+    private void TurnOffAttackedPanel()
+    {
+        lowHealthUI.SetActive(false);
     }
 }
