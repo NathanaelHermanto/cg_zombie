@@ -23,4 +23,4 @@ Clone the source code and run it using Unity on your local machine
 - Zombie movement https://www.youtube.com/watch?v=AGWZ4pM48Sk&ab_channel=b3agz
 - Attack speed https://www.youtube.com/watch?v=FhAdkLC-mSg&list=PLPV2KyIb3jR4KLGCCAciWQ5qHudKtYeP7&index=12&ab_channel=Brackeys
 - Grenade explosion, animation, get objects affected https://www.youtube.com/watch?v=BYL6JtUdEY0&list=WL&index=13&ab_channel=Brackeys
-- Pause menu tutorial https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys
+- Pause menu tutorial https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys & start menu tutorial https://www.youtube.com/watch?v=zc8ac_qUXQY&ab_channel=Brackeys
