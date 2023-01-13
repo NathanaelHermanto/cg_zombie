@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// menu tutorial: https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys
+// Pause menu tutorial: https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;

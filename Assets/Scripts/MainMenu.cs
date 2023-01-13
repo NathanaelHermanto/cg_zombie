@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// menu tutorial: https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys
 public class MainMenu : MonoBehaviour
 {
     public void PlayGame ()
