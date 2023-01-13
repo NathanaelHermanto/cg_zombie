@@ -2506,6 +2506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c7b6a02e4ba9941ac6655da84189ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExitDoor1: {fileID: 0}
+  ExitDoor2: {fileID: 0}
+  ExitDoor3: {fileID: 0}
+  ExitDoor4: {fileID: 0}
+  checkBox: {fileID: 300400970}
 --- !u!4 &1758013699
 Transform:
   m_ObjectHideFlags: 0

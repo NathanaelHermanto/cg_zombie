@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Transform ExitDoor2;
     public Transform ExitDoor3;
     public Transform ExitDoor4;
+    public Toggle checkBox;
 
     static List<Transform> Exits = new List<Transform>();
 
@@ -20,7 +22,14 @@ public class GameManager : MonoBehaviour
             Exits.Add(ExitDoor3);
             Exits.Add(ExitDoor4);
         }
+
+        if (Cheat)
+        {
+            checkBox.isOn = true;
+            Cheat = true;
+        }
     }
+
     public void TurnOnOrOffCheat()
     {
         Cheat = !Cheat;

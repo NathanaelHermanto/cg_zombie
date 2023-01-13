@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public Transform targetCheat;
     public GameObject winUI;
     public GameObject loseUI;
-    public GameObject lowHealthUI;
+    public GameObject attackedUI;
     public Transform target;
     public float health = 100f;
 
@@ -39,8 +39,7 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
-        healthBar.minValue = 0f;
-        healthBar.maxValue = health;
+       
         if (GameManager.Cheat)
         {
             health = 10000f;
@@ -50,6 +49,9 @@ public class Player : MonoBehaviour
         {
             target = GameManager.GetRandomExit();
         }
+
+        healthBar.minValue = 0f;
+        healthBar.maxValue = health;
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("you're dead lol");
             dead = true;
-            lowHealthUI.SetActive(false);
+            attackedUI.SetActive(false);
             EndGame(loseUI);
         }
 
@@ -68,17 +70,22 @@ public class Player : MonoBehaviour
         if (ArrivedAtExit())
         {
             Debug.Log("you win");
-            lowHealthUI.SetActive(false);
+            attackedUI.SetActive(false);
             EndGame(winUI);
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        GameManager.Cheat = false;
     }
 
     public void IsAttacked(float damage)
     {
         health -= damage;
-        lowHealthUI.SetActive(true);
+        attackedUI.SetActive(true);
         Debug.Log("player is attacked, health: " + health);
-        Invoke("TurnOffAttackedPanel", 0.5f);
+        Invoke("TurnOffAttackedPanel", 0.2f);
     }
 
     private bool IsDead()
@@ -100,6 +107,6 @@ public class Player : MonoBehaviour
 
     private void TurnOffAttackedPanel()
     {
-        lowHealthUI.SetActive(false);
+        attackedUI.SetActive(false);
     }
 }

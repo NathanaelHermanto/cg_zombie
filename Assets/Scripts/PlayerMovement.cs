@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 // player movement & jumping tutorial: https://www.youtube.com/watch?v=_QajrabyTJc&ab_channel=Brackeys
 public class PlayerMovement : MonoBehaviour
@@ -6,17 +7,24 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform groundChecker;
     public LayerMask groundMask;
+    public Slider staminaBar;
     public float speedWalk = 5f;
     public float speedRun = 10f;
     public float g = -30f;
     public float groundDistance = 0.4f;
     public float jumpHeight = 1f;
-    public float stamina = 5f;
+    public float stamina = 10f;
 
     Vector3 velocity;
     bool isGrounded;
     float staminaRecRate = 1f;
-    float maxStamina = 5f;
+    float maxStamina = 10f;
+
+    void Start()
+    {
+        staminaBar.minValue = 0f;
+        staminaBar.maxValue = maxStamina;
+    }
 
     // Update is called once per frame
     void Update()
@@ -56,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += g * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        staminaBar.value = stamina;
     }
 
     bool IsRunning()

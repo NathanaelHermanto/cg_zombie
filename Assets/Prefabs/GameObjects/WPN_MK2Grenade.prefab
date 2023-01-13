@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd6b55e9bcf73e4c811a57c252d0645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
-  blastRadius: 10
+  delay: 2.5
+  blastRadius: 7.5
   blastForce: 1000
   explosionEffect: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
 --- !u!1 &1559201302288136405
