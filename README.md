@@ -7,10 +7,10 @@ To win you have to find the correct exit door!
 Clone the source code and run it using Unity on your local machine
 
 ## How to Play
--  W A S D to move
--  SHIFT to run 
--  SPACE to jump
--  Left click to throw a grenade
+-  `W` `A` `S` `D` to move
+-  `SHIFT` to run 
+-  `SPACE` to jump
+-  `Left Click` to throw a grenade
 
 ## Assets
 - Explosion https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-particle-pack-127325
