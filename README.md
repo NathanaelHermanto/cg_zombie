@@ -4,7 +4,8 @@ You are trapped in a laboratorium filled with dormant zombies. The zombies can d
 To win you have to find the correct exit door!
 
 ## How to Run
-- Download the package from one of our releases
+- Download the package from one of our releases\
+or
 - Clone the source code and run it using Unity on your local machine
 
 ## How to Play
