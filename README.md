@@ -4,7 +4,8 @@ You are trapped in a laboratorium filled with dormant zombies. The zombies can d
 To win you have to find the correct exit door!
 
 ## How to Run
-Clone the source code and run it using Unity on your local machine
+- Download the package from one of our releases
+- Clone the source code and run it using Unity on your local machine
 
 ## How to Play
 -  `W` `A` `S` `D` to move
@@ -18,7 +19,7 @@ Clone the source code and run it using Unity on your local machine
 - Zombie https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232
 - 3D Modular Kit https://assetstore.unity.com/packages/3d/environments/3d-free-modular-kit-85732
 
-## Tutorials used
+## Tutorials
 - FPS camera and movement https://www.youtube.com/watch?v=_QajrabyTJc&ab_channel=Brackeys
 - Zombie movement https://www.youtube.com/watch?v=AGWZ4pM48Sk&ab_channel=b3agz
 - Attack speed https://www.youtube.com/watch?v=FhAdkLC-mSg&list=PLPV2KyIb3jR4KLGCCAciWQ5qHudKtYeP7&index=12&ab_channel=Brackeys
