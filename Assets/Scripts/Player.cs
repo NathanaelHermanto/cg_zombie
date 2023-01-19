@@ -109,4 +109,9 @@ public class Player : MonoBehaviour
     {
         attackedUI.SetActive(false);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.layer);
+    }
 }
