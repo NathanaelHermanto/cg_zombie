@@ -5,15 +5,18 @@ public class Zombie : MonoBehaviour
 {
     public Player player;
     public ZombieMovement zombieMovement;
+    public float attackRange = 1f;
 
     Animator animator;
     CharacterController cc;
     float attackSpeed = 1f;
     float attackCooldown = 0f;
     float attackDamage = 10f;
+    int trapGroundMaskValue = 9;
     bool isBlasted = false;
     bool dead = false;
     bool fallback;
+    bool isInTheTrap = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,7 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (zombieMovement.IsArrivedAtTarget() && dead==false)
+        if (zombieMovement.IsArrivedAtTarget() && !dead && PlayerIsInTheSameLevel())
         {
             attackCooldown -= Time.deltaTime;
             AttackPlayer();
@@ -64,6 +67,7 @@ public class Zombie : MonoBehaviour
        
         cc.GetComponent<Rigidbody>().isKinematic = true;
         cc.GetComponent<CapsuleCollider>().gameObject.layer = 7;
+        GetComponent<CapsuleCollider>().gameObject.layer = 7;
         Physics.IgnoreLayerCollision(0, 7);
     }
 
@@ -76,5 +80,18 @@ public class Zombie : MonoBehaviour
     public bool IsDead()
     {
         return dead;
+    }
+
+    bool PlayerIsInTheSameLevel()
+    {
+        return isInTheTrap== player.playerMovement.isInTheTrap;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == trapGroundMaskValue)
+        {
+            isInTheTrap = true;
+        }
     }
 }

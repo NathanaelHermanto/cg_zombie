@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform groundChecker;
     public LayerMask groundMask;
+    public LayerMask trapGroundMask;
     public Slider staminaBar;
     public float speedWalk = 5f;
     public float speedRun = 10f;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public float jumpHeight = 1f;
     public float stamina = 10f;
+    public bool isInTheTrap = false;
 
     Vector3 velocity;
     bool isGrounded;
@@ -32,10 +34,18 @@ public class PlayerMovement : MonoBehaviour
         // ground check
         isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
 
+        if(!isGrounded)
+        {
+            isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, trapGroundMask);
+        }
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
+
+        // trap check
+        isInTheTrap = Physics.CheckSphere(groundChecker.position, groundDistance, trapGroundMask);
 
         // movement
         float x = Input.GetAxis("Horizontal");
