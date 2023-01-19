@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundChecker;
     public LayerMask groundMask;
     public LayerMask trapGroundMask;
+    public LayerMask trapSidesGroundMask;
     public Slider staminaBar;
     public float speedWalk = 5f;
     public float speedRun = 10f;
@@ -37,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
         if(!isGrounded)
         {
             isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, trapGroundMask);
+        }
+
+        if (!isGrounded)
+        {
+            isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, trapSidesGroundMask);
         }
 
         if (isGrounded && velocity.y < 0)

@@ -5,7 +5,6 @@ public class Zombie : MonoBehaviour
 {
     public Player player;
     public ZombieMovement zombieMovement;
-    public float attackRange = 1f;
 
     Animator animator;
     CharacterController cc;
@@ -13,10 +12,11 @@ public class Zombie : MonoBehaviour
     float attackCooldown = 0f;
     float attackDamage = 10f;
     int trapGroundMaskValue = 9;
+    int trapSidesGroundMaskValue = 10;
     bool isBlasted = false;
     bool dead = false;
     bool fallback;
-    bool isInTheTrap = false;
+    int groundLocation = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -84,14 +84,17 @@ public class Zombie : MonoBehaviour
 
     bool PlayerIsInTheSameLevel()
     {
-        return isInTheTrap== player.playerMovement.isInTheTrap;
+        bool isTrapped = IsTrapped();
+        return isTrapped == player.playerMovement.isInTheTrap;
+    }
+
+    bool IsTrapped()
+    {
+        return groundLocation ==  trapGroundMaskValue || groundLocation == trapSidesGroundMaskValue;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == trapGroundMaskValue)
-        {
-            isInTheTrap = true;
-        }
+        groundLocation = collision.gameObject.layer;
     }
 }
