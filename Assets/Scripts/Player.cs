@@ -52,11 +52,14 @@ public class Player : MonoBehaviour
 
         healthBar.minValue = 0f;
         healthBar.maxValue = health;
+
+        Debug.Log("Paused " + PauseMenu.GameIsPaused);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Paused " + PauseMenu.GameIsPaused);
         if (IsDead() && !dead)
         {
             Debug.Log("you're dead lol");
