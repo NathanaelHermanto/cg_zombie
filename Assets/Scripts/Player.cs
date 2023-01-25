@@ -59,10 +59,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Paused " + PauseMenu.GameIsPaused);
         if (IsDead() && !dead)
         {
-            Debug.Log("you're dead lol");
             dead = true;
             attackedUI.SetActive(false);
             EndGame(loseUI);
@@ -72,7 +70,6 @@ public class Player : MonoBehaviour
 
         if (ArrivedAtExit())
         {
-            Debug.Log("you win");
             attackedUI.SetActive(false);
             EndGame(winUI);
         }
